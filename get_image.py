@@ -13,13 +13,13 @@ ImgSize=(250,250)
 input_shape=(250,250,3)
 
 # オリジナル画像用のフォルダ
-os.makedirs("./Original", exist_ok=True)
+os.makedirs("images/Original", exist_ok=True)
 # 顔の画像用のフォルダ
-os.makedirs("./Face", exist_ok=True)
+os.makedirs("images/Face", exist_ok=True)
 # ImgSizeで設定したサイズに編集された顔画像用のフォルダ
-os.makedirs("./FaceEdited", exist_ok=True)
+os.makedirs("images/FaceEdited", exist_ok=True)
 # テストデータを入れる用のフォルダ
-os.makedirs("./test", exist_ok=True)
+os.makedirs("images/test", exist_ok=True)
 
 class Google:
     def __init__(self):
@@ -91,13 +91,13 @@ for name in SearchName:
     # 画像検索
     ImgURLs = google.Search(name, type='image', maximum=ImgNumber)
     # 保存先のディレクトリ作成
-    os.makedirs("./Original/"+str(name), exist_ok=True)
+    os.makedirs("images/Original/"+str(name), exist_ok=True)
 
     #Originalファイルに画像を保存する
     for i,target in enumerate(ImgURLs): # ImgURLsからtargetに入れる
         try:
             re = requests.get(target, allow_redirects=False)
-            with open("./Original/"+str(name)+'/' + str(i)+'.jpg', 'wb') as f: # imgフォルダに格納
+            with open("images/Original/"+str(name)+'/' + str(i)+'.jpg', 'wb') as f: # imgフォルダに格納
                 f.write(re.content) # .contentにて画像データとして書き込む
         except requests.exceptions.ConnectionError:
             continue
