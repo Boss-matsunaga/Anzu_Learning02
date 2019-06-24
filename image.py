@@ -1,4 +1,3 @@
-#https://qiita.com/yottyann1221/items/a08300b572206075ee9f
 # -*- coding:utf-8 -*-
 import cv2
 import numpy as np
