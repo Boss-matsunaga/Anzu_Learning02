@@ -15,5 +15,5 @@ for name in file_path:
     pred = model.predict(img_nad, batch_size=1, verbose=0)
     score = np.max(pred)
     pred_label = label[np.argmax(pred[0])]
-    # print('name:', pred_label)
+    print('name:', pred_label)
     print('score:', pred)
