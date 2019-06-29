@@ -81,5 +81,5 @@ def image_inflated():
     print("画像の水増しに大成功しました！")
 
 if __name__ == '__main__':
-    #cut_face()
+    cut_face()
     image_inflated()
