@@ -14,6 +14,7 @@ ImgSize=(250,250)
 input_shape=(250,250,3)
 
 def cut_face():
+    # アニメ顔のカスケードファイル
     cascade_path = 'lbpcascade_animeface.xml'
     faceCascade = cv2.CascadeClassifier(cascade_path)
 
@@ -83,3 +84,4 @@ def image_inflated():
 if __name__ == '__main__':
     cut_face()
     image_inflated()
+    print("完了しました")
