@@ -84,28 +84,30 @@ class Google:
             links = [js['ou'] for js in jsons]
         return links
 
-#画像のURLをgoogle検索から取得する
-# インスタンス作成
-google = Google()
-for name in SearchName:
-    # 画像検索
-    ImgURLs = google.Search(name, type='image', maximum=ImgNumber)
-    # 保存先のディレクトリ作成
-    os.makedirs("images/Original/"+str(name), exist_ok=True)
 
-    #Originalファイルに画像を保存する
-    for i,target in enumerate(ImgURLs): # ImgURLsからtargetに入れる
-        try:
-            re = requests.get(target, allow_redirects=False)
-            with open("images/Original/"+str(name)+'/' + str(i)+'.jpg', 'wb') as f: # imgフォルダに格納
-                f.write(re.content) # .contentにて画像データとして書き込む
-        except requests.exceptions.ConnectionError:
-            continue
-        except UnicodeEncodeError:
-            continue
-        except UnicodeError:
-            continue
-        except IsADirectoryError:
-            continue
+if __name__ == "__main__":
+    #画像のURLをgoogle検索から取得する
+    # インスタンス作成
+    google = Google()
+    for name in SearchName:
+        # 画像検索
+        ImgURLs = google.Search(name, type='image', maximum=ImgNumber)
+        # 保存先のディレクトリ作成
+        os.makedirs("images/Original/"+str(name), exist_ok=True)
 
-print("保存完了しました") # 確認
+        #Originalファイルに画像を保存する
+        for i,target in enumerate(ImgURLs): # ImgURLsからtargetに入れる
+            try:
+                re = requests.get(target, allow_redirects=False)
+                with open("images/Original/"+str(name)+'/' + str(i)+'.jpg', 'wb') as f: # imgフォルダに格納
+                    f.write(re.content) # .contentにて画像データとして書き込む
+            except requests.exceptions.ConnectionError:
+                continue
+            except UnicodeEncodeError:
+                continue
+            except UnicodeError:
+                continue
+            except IsADirectoryError:
+                continue
+
+    print("保存完了しました") # 確認
